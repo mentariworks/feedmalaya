@@ -6,6 +6,7 @@ class Model_Post extends Orm\Model {
         'id',
         'user_id',
         'short_uri',
+        'long_uri',
         'type',
         'status',
         'created_at',

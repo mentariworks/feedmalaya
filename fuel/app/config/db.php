@@ -17,7 +17,7 @@ return array(
 		'type'			=> 'mysql',
 		'connection'	=> array(
 			'hostname'   => 'localhost',
-			'database'   => 'fuel_dev',
+			'database'   => 'kimy_dev',
 			'username'   => 'root',
 			'password'   => '',
 			'persistent' => false,
@@ -32,7 +32,7 @@ return array(
 		'type'			=> 'mysql',
 		'connection'	=> array(
 			'hostname'   => 'localhost',
-			'database'   => 'fuel_prod',
+			'database'   => 'kimy_prod',
 			'username'   => 'root',
 			'password'   => '',
 			'persistent' => false,
@@ -47,7 +47,7 @@ return array(
 		'type'			=> 'mysql',
 		'connection'	=> array(
 			'hostname'   => 'localhost',
-			'database'   => 'fuel_test',
+			'database'   => 'kimy_test',
 			'username'   => 'root',
 			'password'   => '',
 			'persistent' => false,
@@ -62,7 +62,7 @@ return array(
 		'type'			=> 'mysql',
 		'connection'	=> array(
 			'hostname'   => 'localhost',
-			'database'   => 'fuel_stage',
+			'database'   => 'kimy_stage',
 			'username'   => 'root',
 			'password'   => '',
 			'persistent' => false,

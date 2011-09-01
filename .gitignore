@@ -1,0 +1,6 @@
+fuel/app/logs/*/*/*
+fuel/app/cache/*/*
+fuel/app/tmp/*
+fuel/app/config/migrations.php
+.project
+.DS_Store

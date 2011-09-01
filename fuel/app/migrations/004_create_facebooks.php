@@ -7,7 +7,7 @@ class Create_facebooks {
 	public function up()
 	{
 		\DBUtil::create_table('facebooks', array(
-			'id' => array('constraint' => 11, 'type' => 'int'),
+			'id' => array('constraint' => 30, 'type' => 'bigint'),
 			'facebook_name' => array('constraint' => 200, 'type' => 'varchar'),
 			'first_name' => array('constraint' => 100, 'type' => 'varchar'),
 			'last_name' => array('constraint' => 100, 'type' => 'varchar'),

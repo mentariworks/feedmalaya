@@ -13,7 +13,9 @@
 return array(
 	'active' => Config::get('environment'),
 
-	Fuel::DEVELOPMENT => array(
+	\FeedMalaya\Config::ENVIRONMENT => \FeedMalaya\Config::$database,
+	/*
+	array(
 		'type'			=> 'mysql',
 		'connection'	=> array(
 			'hostname'   => 'localhost',
@@ -26,52 +28,7 @@ return array(
 		'charset'      => 'utf8',
 		'caching'      => false,
 		'profiling'    => false,
-	),
-
-	Fuel::PRODUCTION => array(
-		'type'			=> 'mysql',
-		'connection'	=> array(
-			'hostname'   => 'localhost',
-			'database'   => 'kimy_prod',
-			'username'   => 'root',
-			'password'   => '',
-			'persistent' => false,
-		),
-		'table_prefix' => '',
-		'charset'      => 'utf8',
-		'caching'      => false,
-		'profiling'    => false,
-	),
-
-	Fuel::TEST => array(
-		'type'			=> 'mysql',
-		'connection'	=> array(
-			'hostname'   => 'localhost',
-			'database'   => 'kimy_test',
-			'username'   => 'root',
-			'password'   => '',
-			'persistent' => false,
-		),
-		'table_prefix' => '',
-		'charset'      => 'utf8',
-		'caching'      => false,
-		'profiling'    => false,
-	),
-
-	Fuel::STAGE => array(
-		'type'			=> 'mysql',
-		'connection'	=> array(
-			'hostname'   => 'localhost',
-			'database'   => 'kimy_stage',
-			'username'   => 'root',
-			'password'   => '',
-			'persistent' => false,
-		),
-		'table_prefix' => '',
-		'charset'      => 'utf8',
-		'caching'      => false,
-		'profiling'    => false,
-	),
+	),*/
 
 	'redis' => array(
 		'default' => array(

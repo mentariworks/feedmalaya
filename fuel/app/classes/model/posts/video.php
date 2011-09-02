@@ -16,7 +16,7 @@ class Model_Posts_Video extends Orm\Model {
     );
 
     protected static $_observers = array(
-        'Observer_UpdatedAt' => array('before_save'),
+        '\\Observer_UpdatedAt' => array('before_save'),
     );
 
 }

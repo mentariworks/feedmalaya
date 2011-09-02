@@ -1,6 +1,6 @@
 <?php
 
-class Observer_UpdateAt extends \Orm\Observer_UpdateAt {
+class Observer_UpdatedAt extends \Orm\Observer_UpdatedAt {
 
     public static $mysql_timestamp = true;
 

@@ -13,7 +13,7 @@ $content = (isset($content) ? $content : ''); ?>
         script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <?php echo \Asset::css(array('bootstrap-1.1.1.css', 'screen.css')); ?>
+    <?php echo \Asset::css(array('bootstrap-1.1.1.css')); ?>
     <?php echo \Asset::js(array('jquery.1.6.2.min.js', 'local.js')); ?>
 </head>
 <body>
@@ -21,15 +21,30 @@ $content = (isset($content) ? $content : ''); ?>
         <div class="fill">
             <div class="container">
                 <h3><?php echo \Hybrid\Html::anchor('/', \Config::get('app.site_name')); ?></h3>
-                <ul>
-                    <li><?php echo \Hybrid\Html::anchor('/', 'Home'); ?></li>
-                </ul>
             </div>
         </div>
     </div>
 
-    <div class="container after-topbar">
-        <?php echo $content; ?>
+    <div class="container" style="margin-top:60px">
+        <div class="row">
+    <div class="span16 columns">
+        <?php echo \Hybrid\Html::h($title, 2); ?>
+
+        <?php if (!empty($errors)) : ?>
+            <h3>Errors</h3>
+            <?php foreach($errors as $error) : ?>
+                <div class="alert-message error">
+                    <?php echo $error; ?>
+                </div>
+            <?php endforeach; ?>
+
+            <p><?php echo \Hybrid\Html::anchor($prev, "&laquo; Back", array('class' => "btn danger")); ?></p>
+        <?php else : ?>
+            <?php echo $content; ?>
+        <?php endif; ?>
+    </div>
+</div>
+
     </div>
 
 </body>

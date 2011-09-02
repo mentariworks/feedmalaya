@@ -19,7 +19,7 @@ class Controller_Welcome extends \Hybrid\Controller_Template {
     public function action_index()
     {
         $this->response(array(
-            'content' => '',
+            'content' => $this->template->partial('static/welcome'),
         ), 200);
     }
 

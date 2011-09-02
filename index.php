@@ -11,9 +11,9 @@ call_user_func(function() {
 	/**
 	 * Set all the paths here
 	 */
-	$app_path		= '../fuel/app/';
-	$package_path	= '../fuel/packages/';
-	$core_path		= '../fuel/core/';
+	$app_path		= './fuel/app/';
+	$package_path	= './fuel/packages/';
+	$core_path		= './fuel/core/';
 
 
 	/**

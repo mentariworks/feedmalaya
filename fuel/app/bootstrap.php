@@ -12,14 +12,7 @@ Autoloader::add_classes(array(
 // Register the autoloader
 Autoloader::register();
 
-if (false === Fuel::$is_cli)
-{
-    require_once DOCROOT.'config.php';
-}
-else
-{
-    require_once DOCROOT.'public/config.php';
-}
+include DOCROOT.'config.php';
 
 // Initialize the framework with the config file.
 Fuel::init(include(APPPATH.'config/config.php'));

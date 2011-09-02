@@ -1,11 +1,11 @@
 <?php
 return array(
-    '_root_'                  => 'site/index',       // The default route
+    '_root_'                  => 'welcome/index',       // The default route
     '_404_'                   => 'welcome/404',      // The main 404 route
 
     '(login|register|logout)' => 'credential/$1',
 
-    'page/:number'            => 'site/index',
+    'page/:number'            => 'welcome/index',
 
     'p/:short_uri'            => 'site/post',
     'post/:id/:long_uri'      => 'site/post',

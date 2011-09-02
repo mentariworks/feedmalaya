@@ -1,6 +1,6 @@
 <?php
 
-class Observer_CreatedAt extends \Orm\Observer_CreateAt {
+class Observer_CreatedAt extends \Orm\Observer_CreatedAt {
 
     public static $mysql_timestamp = true;
 

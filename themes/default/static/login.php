@@ -28,3 +28,15 @@
     </form>
     </div>
 </div>
+
+<script type="text/javascript">
+jQuery(function($) {
+    $('#login').submit(function(e) {
+        e.preventDefault();
+
+        Local.request('POST <?php echo \Uri::create("credential/login.json"); ?>', this);
+
+        return false;
+    });
+});
+</script>

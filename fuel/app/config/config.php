@@ -51,9 +51,9 @@ return array(
 	 * Fuel::STAGE
 	 * Fuel::PRODUCTION
 	 */
-	'environment'	=> (isset($_SERVER['FUEL_ENV']) ? $_SERVER['FUEL_ENV'] : FM_ENVIRONMENT),
+	'environment'	=> (isset($_SERVER['FUEL_ENV']) ? $_SERVER['FUEL_ENV'] : \FeedMalaya\Config::ENVIRONMENT),
 
-	'profiling'		=> false,
+	'profiling'		=> true,
 
 	'caching'			=> false,
 	'cache_dir'			=> APPPATH.'cache/',
@@ -211,7 +211,9 @@ return array(
 		/**
 		 * Classes to autoload & initialize even when not used
 		 */
-		'classes'	=> array(),
+		'classes'	=> array(
+			'\\Factory',
+		),
 
 		/**
 		 * Configs to autoload

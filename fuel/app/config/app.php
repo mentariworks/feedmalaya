@@ -2,10 +2,10 @@
 
 return array(
     // application identity is a unique string to be used in cookie and etc.
-    'identity'              => 'fuelapp',
+    'identity'              => 'feedmalaya',
     
     // set application name
-    'site_name'             => 'FuelPHP Application',
+    'site_name'             => 'FeedMalaya',
     
     // set application tagline
     'site_tagline'          => 'Some fancy words',

@@ -10,13 +10,11 @@ class Model_Post extends Orm\Model {
         'type',
         'status',
         'created_at',
-        'updated_at',
     );
 
-	protected static $_observers = array(
-		'Observer_CreatedAt' => array('before_insert'),
-		'Observer_UpdatedAt' => array('before_save'),
-	);
+    protected static $_observers = array(
+        'Observer_CreatedAt' => array('before_insert'),
+    );
 }
 
 /* End of file post.php */

@@ -51,7 +51,7 @@ return array(
 	 * Fuel::STAGE
 	 * Fuel::PRODUCTION
 	 */
-	'environment'	=> (isset($_SERVER['FUEL_ENV']) ? $_SERVER['FUEL_ENV'] : Fuel::DEVELOPMENT),
+	'environment'	=> (isset($_SERVER['FUEL_ENV']) ? $_SERVER['FUEL_ENV'] : FM_ENVIRONMENT),
 
 	'profiling'		=> false,
 

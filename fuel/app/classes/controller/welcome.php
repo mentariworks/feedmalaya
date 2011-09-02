@@ -44,6 +44,17 @@ class Controller_Welcome extends \Hybrid\Controller_Template {
             case false !== $channel :
                 $query->where('type', '=', $channel);
             break;
+            case false !== $day and false !== $month and false !== $year :
+            case false !== $month and false !== $year :
+                $year       = intval($year);
+                $start_year = \Date::factory(strtotime("{$year}-01-01 00:00:00"))->format('mysql');
+                $end_year   = \Date::factory(strtotime("{$year}-12-31 23:59:59"))->format('mysql');
+                $query->where('published_at', 'BETWEEN', array($start_year, $end_year));
+            case false !== $year :
+                $start = \Date::factory(strtotime("{$year}-01-01 00:00:00"))->format('mysql');
+                $end   = \Date::factory(strtotime("{$year}-12-31 23:59:59"))->format('mysql');
+                $query->where('published_at', 'BETWEEN', array($start, $end));
+            break;
         }
 
         $data = array(

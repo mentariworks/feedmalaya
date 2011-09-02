@@ -5,7 +5,7 @@ namespace FeedMalaya;
 class Config {
     
     const ENVIRONMENT = \Fuel::DEVELOPMENT;
-    const PROFILING   = false;
+    const PROFILING   = true;
 
     public static $database = array(
         'type'       => 'mysql',

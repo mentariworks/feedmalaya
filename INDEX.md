@@ -1,0 +1,6 @@
+    ALTER TABLE `options` ADD INDEX `active_INDEX` ( `active` ) 
+    ALTER TABLE `users_auths` ADD UNIQUE `user_id_UNIQUE` (`user_id`)
+    ALTER TABLE `users_meta` ADD UNIQUE `user_id_UNIQUE` (`user_id`)
+    ALTER TABLE `posts` ADD UNIQUE `short_uri_UNIQUE` (`short_uri`)
+    ALTER TABLE `posts_texts` ADD UNIQUE `post_id_UNIQUE` (`post_id`)
+    ALTER TABLE `posts_links` ADD UNIQUE `post_id_UNIQUE` (`post_id`)

@@ -5,10 +5,11 @@ namespace FeedMalaya;
 class Config {
     
     const ENVIRONMENT = \Fuel::DEVELOPMENT;
+    const PROFILING   = true;
 
     public static $database = array(
-        'type'          => 'mysql',
-        'connection'    => array(
+        'type'       => 'mysql',
+        'connection' => array(
             'hostname'   => 'localhost',
             'database'   => 'kimy_dev',
             'username'   => 'root',

@@ -14,6 +14,7 @@ class Create_posts {
 			'type' => array('constraint' => "'text','image','imageset','video','code','link','feed'", 'type' => 'enum', 'default' => 'feed'),
 			'status' => array('constraint' => "'draft','publish','private','delete'", 'type' => 'enum', 'default' => 'publish'),
 			'created_at' => array('type' => 'datetime'),
+			'published_at' => array('type' => 'datetime'),
 		), array('id'), true, 'InnoDB');
 	}
 

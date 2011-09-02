@@ -10,6 +10,11 @@ class Model_Post extends Orm\Model {
         'type',
         'status',
         'created_at',
+        'published_at',
+    );
+
+    protected static $_belongs_to = array(
+        'users' => array('model_to' => 'Model_User'),
     );
 
     protected static $_observers = array(

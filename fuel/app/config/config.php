@@ -53,7 +53,7 @@ return array(
 	 */
 	'environment'	=> (isset($_SERVER['FUEL_ENV']) ? $_SERVER['FUEL_ENV'] : \FeedMalaya\Config::ENVIRONMENT),
 
-	'profiling'		=> true,
+	'profiling'		=> \FeedMalaya\Config::PROFILING,
 
 	'caching'			=> false,
 	'cache_dir'			=> APPPATH.'cache/',
@@ -172,7 +172,7 @@ return array(
 	 *      array(APPPATH.'modules'.DS)
 	 */
 	'module_paths' => array(
-		//APPPATH.'modules'.DS
+		DOCROOT.'modules'.DS
 	),
 
 

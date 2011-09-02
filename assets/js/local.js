@@ -19,6 +19,7 @@ var Local = {
      */
     initiate: function() {
         this.cache.doc = $(document);
+        this.cache.content = $('#content');
     },
 
     request: function(curl, object, dataType) {
@@ -59,11 +60,18 @@ var Local = {
             'data': $(object).serialize(),
             'complete': function(xhr) {
                 var data = Local.getJSON(xhr.responseText);
-                
+                var errors = [];
+
                 var default_text = 'Invalid request';
                 
                 if (!(data == null || data.text == null)) {
-                    default_text = data.text.toString();
+                    errors.push(data.text.toString());
+                }
+
+                if ('undefined' !== typeof data.errors && data.errors !== null) {
+                    for (var i = 0, length = data.errors.length; i < length; i++) {
+                        errors.push(data.errors[i]);
+                    }
                 }
                 
                 Local.progress(true);
@@ -102,11 +110,13 @@ var Local = {
                     break;
                     
                     default:
-                        Local.alert({
-                            message: default_text, 
-                            status: 'error', 
-                            target: id
-                        });
+                        for (var i = 0, length = errors.length; i < length; i++) {
+                            Local.alert({
+                                message: errors[i], 
+                                status: 'error', 
+                                target: id
+                            });
+                        }
                     break;
                 }
             }
@@ -148,5 +158,10 @@ var Local = {
             var target = message.target;
             message = message.message; 
         }
+
+        var div = $('<div/>').addClass('alert-message ' + status).prependTo(this.cache.content);
+        $('<a/>').addClass('close').attr('href', '#').text('x').appendTo(div);
+        $('<p/>').html(message).appendTo(div);
+        div.alert();
     }
 }

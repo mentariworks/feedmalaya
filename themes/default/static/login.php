@@ -6,6 +6,7 @@
 
     <div class="span11 columns">
     <form id="login" method="post" action="<?php echo \Uri::current(); ?>">
+        <?php echo \Form::hidden('redirect_to', \Hybrid\Input::get('redirect_to')); ?>
         <fieldset>
             <div class="clearfix">
                 <label>Username</label>

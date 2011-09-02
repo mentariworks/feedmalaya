@@ -215,6 +215,25 @@ class Controller_Setup extends \Controller {
             $meta->first_name = '';
             $meta->last_name  = '';
             $meta->save();
+
+            $title = 'Hello World';
+            $content = 'Some dummy text, remove this when you\'re done.';
+
+            $post               = \Model_Post::factory();
+            $post->user_id      = $user->id;
+            $post->type         = 'text';
+            $post->short_uri    = 1;
+            $post->status       = 'publish';
+            $post->long_uri     = \Inflector::friendly_title($title, '-', true);
+            $post->published_at = \Date::time()->format('mysql');
+            $post->save();
+
+            $text          = \Model_Posts_Text::factory();
+            $text->post_id = $post->id;
+            $text->title   = $title;
+            $text->content = $content;
+            $text->save();
+
         }
 
         return array(

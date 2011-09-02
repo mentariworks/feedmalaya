@@ -14,7 +14,7 @@ $content = (isset($content) ? $content : ''); ?>
     <![endif]-->
 
     <?php echo \Asset::css(array('bootstrap-1.1.1.css', 'screen.css')); ?>
-    <?php echo \Asset::js(array('jquery.1.6.2.min.js', 'local.js')); ?>
+    <?php echo \Asset::js(array('jquery.1.6.2.min.js', 'local.js', 'bootstrap/alert.js')); ?>
 </head>
 <body>
     <div class="topbar">
@@ -28,9 +28,14 @@ $content = (isset($content) ? $content : ''); ?>
         </div>
     </div>
 
-    <div class="container after-topbar">
+    <div id="content" class="container after-topbar">
         <?php echo $content; ?>
     </div>
 
+    <script type="text/javascript">
+    jQuery(function($) {
+        Local.initiate();
+    });
+    </script>
 </body>
 </html>

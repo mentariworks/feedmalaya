@@ -18,6 +18,12 @@ class Controller_Welcome extends \Hybrid\Controller_Template {
      */
     public function action_index()
     {
+        if (null !== $p = \Hybrid\Input::get('p', null))
+        {
+            $response = \Request::factory('p/' . $p)->execute();
+            return $this->response->body = $response;
+        }
+
         $this->response(array(
             'content' => $this->template->partial('static/welcome'),
         ), 200);

@@ -2,41 +2,45 @@
 
 /**
  * The Welcome Controller.
- *
- * A basic controller example.  Has examples of how to set the
- * response body and status.
  * 
  * @package  app
  * @extends  Controller
  */
-class Controller_Welcome extends Controller {
+class Controller_Welcome extends \Hybrid\Controller_Template {
+    
+    public $template = 'frontend.default';
 
-	/**
-	 * The index action.
-	 * 
-	 * @access  public
-	 * @return  void
-	 */
-	public function action_index()
-	{
-		$this->response->body = View::factory('welcome/index');
-	}
+    /**
+     * The index action.
+     * 
+     * @access  public
+     * @return  void
+     */
+    public function action_index()
+    {
+        $this->response(array(
+            'content' => '',
+        ), 200);
+    }
 
-	/**
-	 * The 404 action for the application.
-	 * 
-	 * @access  public
-	 * @return  void
-	 */
-	public function action_404()
-	{
-		$messages = array('Aw, crap!', 'Bloody Hell!', 'Uh Oh!', 'Nope, not here.', 'Huh?');
-		$data['title'] = $messages[array_rand($messages)];
+    /**
+     * The 404 action for the application.
+     * 
+     * @access  public
+     * @return  void
+     */
+    public function action_404()
+    {
+        $messages      = array('Aw, crap!', 'Bloody Hell!', 'Uh Oh!', 'Nope, not here.', 'Huh?');
+        $data['title'] = $messages[array_rand($messages)];
+        $data['uri']   = \Uri::main();
 
-		// Set a HTTP 404 output header
-		$this->response->status = 404;
-		$this->response->body = View::factory('welcome/404', $data);
-	}
+        // Set a HTTP 404 output header
+        $this->response(array(
+            'title'   => $data['title'],
+            'content' => $this->template->partial('404', $data),
+        ), 404);
+    }
 }
 
 /* End of file welcome.php */

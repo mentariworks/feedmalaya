@@ -13,7 +13,7 @@ $content = (isset($content) ? $content : ''); ?>
         script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <?php echo \Asset::css(array('bootstrap-1.1.1.css', 'screen.css')); ?>
+    <?php echo \Asset::css(array('bootstrap-1.1.1.css', 'bootstrap/screen.css')); ?>
     <?php echo \Asset::js(array('jquery.1.6.2.min.js', 'local.js', 'bootstrap/alert.js', 'bootstrap/dropdown.js')); ?>
 </head>
 <body>
@@ -27,6 +27,7 @@ $content = (isset($content) ? $content : ''); ?>
                         <?php echo \Hybrid\Html::anchor('#', 'Channels', array('class' => 'menu')); ?>
                         <ul class="menu-dropdown">
                             <li><?php echo \Hybrid\Html::anchor('channel/text', 'Text'); ?></li>
+                            <li><?php echo \Hybrid\Html::anchor('channel/link', 'Link'); ?></li>
                         </ul>
                     </li>
                 </ul>

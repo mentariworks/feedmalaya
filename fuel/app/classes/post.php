@@ -35,9 +35,16 @@ class Post {
 
     }
 
-    public static function excerpt(\Model_Post $post, $limit = 150)
+    public static function excerpt(\Model_Post $post, $limit = 150, $is_html = true)
     {
-        return \Str::truncate(static::content($post), $limit, '... Read More');
+        $content = static::content($post);
+
+        if (false == $is_html)
+        {
+            $content = strip_tags($content);
+        }
+
+        return \Str::truncate($content, $limit, '...');
     }
 
     public static function uri(\Model_Post $post, $short_uri = false)
@@ -52,4 +59,5 @@ class Post {
         return \Uri::create($uri);
 
     }
+    
 }

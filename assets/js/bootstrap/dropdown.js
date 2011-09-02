@@ -14,6 +14,7 @@
   $.fn.dropdown = function ( options ) {
     return this.each(function () {
       $(this).delegate('a.menu', 'click', function (e) {
+        e.preventDefault()
         clearMenus()
         $(this).parent('li').toggleClass('open')
         return false

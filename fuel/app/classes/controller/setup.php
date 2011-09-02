@@ -222,11 +222,13 @@ class Controller_Setup extends \Controller {
             $post               = \Model_Post::factory();
             $post->user_id      = $user->id;
             $post->type         = 'text';
-            $post->short_uri    = 1;
+            $post->short_uri    = \Factory::inc('');
             $post->status       = 'publish';
             $post->long_uri     = \Inflector::friendly_title($title, '-', true);
             $post->published_at = \Date::time()->format('mysql');
             $post->save();
+
+
 
             $text          = \Model_Posts_Text::factory();
             $text->post_id = $post->id;

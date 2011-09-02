@@ -17,6 +17,11 @@ class Model_Post extends Orm\Model {
         'users' => array('model_to' => 'Model_User'),
     );
 
+    protected static $_has_one = array(
+        'texts' => array('model_to' => 'Model_Posts_Text'),
+        'links' => array('model_to' => 'Model_Posts_Link'),
+    );
+
     protected static $_observers = array(
         '\\Observer_CreatedAt' => array('before_insert'),
     );

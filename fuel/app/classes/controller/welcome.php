@@ -29,6 +29,32 @@ class Controller_Welcome extends \Hybrid\Controller_Template {
         ), 200);
     }
 
+    public function action_archive()
+    {
+        $channel = $this->param('channel');
+        $year    = $this->param('year');
+        $month   = $this->param('month');
+        $day     = $this->param('day');
+
+        $query  = \Model_Post::query()
+            ->where('status', 'IN', array('publish'));
+
+        switch (true)
+        {
+            case false !== $channel :
+                $query->where('type', '=', $channel);
+            break;
+        }
+
+        $data = array(
+            'posts' => $query->get(),
+        );
+
+        $this->response(array(
+            'content' => $this->template->partial('static/archive', $data),
+        ), 200);
+    }
+
     /**
      * The 404 action for the application.
      * 

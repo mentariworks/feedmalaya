@@ -10,9 +10,11 @@ class Controller_Welcome extends \Hybrid\Controller_Hybrid {
         {
             \Response::redirect('/login?redirect_to=/admin/welcome', 'refresh');
         }
+
+        $data = array();
         
         $this->response(array(
-            'content' => 'hello world',
+            'content' => \View::factory('welcome/index', $data),
         ), 200);
     }
 

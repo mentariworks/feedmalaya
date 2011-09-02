@@ -1,13 +1,15 @@
 <?php
 return array(
-    '_root_'  => 'site/index',  // The default route
-    '_404_'   => 'welcome/404',    // The main 404 route
+    '_root_'                  => 'site/index',       // The default route
+    '_404_'                   => 'welcome/404',      // The main 404 route
 
-    'page/:number'          => 'site/index',
+    '(login|register|logout)' => 'credential/$1',
 
-    'p/:short_uri'          => 'site/post',
-    'post/:id/:long_uri'    => 'site/post',
-    'post/:id'              => 'site/post',
+    'page/:number'            => 'site/index',
+
+    'p/:short_uri'            => 'site/post',
+    'post/:id/:long_uri'      => 'site/post',
+    'post/:id'                => 'site/post',
     
     /**
      * This is an example of a BASIC named route (used in reverse routing).

@@ -15,7 +15,7 @@ return array(
     
     // set template file
     'template'              => array(
-        'load_assets'           => false,
+        'load_assets'           => true,
         'default_folder'        => 'default/',
         'default_filename'      => 'index',
         'auto_encode'           => false,

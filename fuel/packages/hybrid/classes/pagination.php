@@ -75,6 +75,12 @@ class Pagination {
         'next_mark'      => ' &raquo;',
         'active_start'   => '<span class="active"> ',
         'active_end'     => ' </span>',
+        'disabled'       => array(
+            'previous_start' => '<li class="prev disabled"><a href="#">',
+            'previous_end'   => '</a></li>',
+            'next_start'     => '<li class="next disabled"><a href="#">',
+            'next_end'       => '</a></li>',
+        ),
     );
 
     /**
@@ -127,7 +133,6 @@ class Pagination {
      */
     public static function _init()
     {
-        \Config::load('pagination', 'pagination');
         $config = \Config::get('pagination', array());
 
         static::set_config($config);

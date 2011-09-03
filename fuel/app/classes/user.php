@@ -2,6 +2,15 @@
 
 class User {
     
+    /**
+     * Validate username format
+     *
+     * @static
+     * @access  public
+     * @param   string  $name
+     * @return  bool
+     * @throws  \Fuel_Exception
+     */
     public static function check_username($name)
     {
         if (empty($name))
@@ -29,6 +38,15 @@ class User {
         return true;
     }
 
+    /**
+     * Validate e-mail address
+     *
+     * @static
+     * @access  public
+     * @param   string  $address
+     * @return  bool
+     * @throws  \Fuel_Exception
+     */
     public static function check_email($address)
     {
         if (false == filter_var($address, FILTER_VALIDATE_EMAIL))

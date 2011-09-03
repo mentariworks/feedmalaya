@@ -2,17 +2,6 @@
 
 class Post {
     
-    public static function latest($limit = 10)
-    {
-        return \Model_Post::query()
-            ->related('users')
-            ->where('status', 'IN', array('publish'))
-            ->where('published_at', '<=', \Date::time()->format('mysql'))
-            ->order_by(array('published_at' => 'DESC'))
-            ->limit($limit)
-            ->get();
-    }
-
     public static function title(\Model_Post $post)
     {
         $relations = \Inflector::pluralize($post->type);

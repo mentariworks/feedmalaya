@@ -6,7 +6,7 @@
 <div class="row">
 <?php 
 
-$posts = \Post::latest(6);
+$posts = \Model_Post::latest(6);
 $count = 0;
 foreach ($posts as $post) : 
 

@@ -25,6 +25,17 @@ class Model_Post extends Orm\Model {
     protected static $_observers = array(
         '\\Observer_CreatedAt' => array('before_insert'),
     );
+
+    public static function latest($limit = 30)
+    {
+        return static::query()
+            ->related('users')
+            ->where('status', 'IN', array('publish'))
+            ->where('published_at', '<=', \Date::time()->format('mysql'))
+            ->order_by(array('published_at' => 'DESC'))
+            ->limit($limit)
+            ->get();
+    }
 }
 
 /* End of file post.php */

@@ -1,9 +1,22 @@
 <?php
 
+/**
+ * The Post Controller.
+ * 
+ * @package  app
+ * @extends  \Hybrid\Controller_Template
+ */
+
 class Controller_Post extends \Hybrid\Controller_Template {
     
     public $template = 'frontend.default';
 
+    /**
+     * View single post
+     *
+     * @access  public
+     * @return  void
+     */
     public function action_index()
     {
         $post = null;
@@ -52,6 +65,13 @@ class Controller_Post extends \Hybrid\Controller_Template {
         $this->response($body, 200);
     }
 
+    /**
+     * Fetch Text Post
+     *
+     * @access  protected
+     * @param   \Model_Post $post
+     * @return  array
+     */
     protected function type_text(\Model_Post $post)
     {
         $text = \Model_Posts_Text::query()
@@ -75,6 +95,13 @@ class Controller_Post extends \Hybrid\Controller_Template {
         );
     }
 
+    /**
+     * Fetch Link Post
+     *
+     * @access  protected
+     * @param   \Model_Post $post
+     * @return  array
+     */
     protected function type_link(\Model_Post $post)
     {
         $link = \Model_Posts_Link::query()

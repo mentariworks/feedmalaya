@@ -4,8 +4,9 @@
  * The Welcome Controller.
  * 
  * @package  app
- * @extends  Controller
+ * @extends  \Hybrid\Controller_Template
  */
+
 class Controller_Welcome extends \Hybrid\Controller_Template {
     
     public $template = 'frontend.default';
@@ -29,6 +30,12 @@ class Controller_Welcome extends \Hybrid\Controller_Template {
         ), 200);
     }
 
+    /**
+     * The archive action
+     *
+     * @access  public
+     * @return  void
+     */
     public function action_archive()
     {
         $title   = '';

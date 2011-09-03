@@ -1,9 +1,22 @@
 <?php
 
+/**
+ * The Credential Controller.
+ * 
+ * @package  app
+ * @extends  \Hybrid\Controller_Hybrid
+ */
+
 class Controller_Credential extends \Hybrid\Controller_Hybrid {
 
     public $template = 'frontend.default';
     
+    /**
+     * Login Form
+     *
+     * @access  public
+     * @return  void
+     */
     public function action_login()
     {
         if (true === \Hybrid\Auth_User::instance()->is_logged())
@@ -17,6 +30,12 @@ class Controller_Credential extends \Hybrid\Controller_Hybrid {
         ), 200);
     }
 
+    /**
+     * Register Form
+     *
+     * @access  public
+     * @return  void
+     */
     public function action_register()
     {
         if (true === \Hybrid\Auth_User::instance()->is_logged())
@@ -30,6 +49,12 @@ class Controller_Credential extends \Hybrid\Controller_Hybrid {
         ), 200);
     }
 
+    /**
+     * Logout account
+     *
+     * @access  public
+     * @return  void
+     */
     public function action_logout()
     {
         \Hybrid\Auth::logout(true);
@@ -37,6 +62,12 @@ class Controller_Credential extends \Hybrid\Controller_Hybrid {
         \Response::redirect('/');
     }
 
+    /**
+     * Process user login
+     *
+     * @access  public
+     * @return  void
+     */
     public function post_login()
     {
         $username    = \Hybrid\Input::post('username');

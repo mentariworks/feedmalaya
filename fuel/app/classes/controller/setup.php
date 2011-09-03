@@ -1,9 +1,16 @@
 <?php
 
+/**
+ * The Setup/Installer Controller.
+ * 
+ * @package  app
+ * @extends  \Controller
+ */
+
 class Controller_Setup extends \Controller {
     
     /**
-     * Should not be accessible
+     * Shortcut to install action
      *
      * @access  public
      * @return  void
@@ -15,7 +22,7 @@ class Controller_Setup extends \Controller {
     }
 
     /**
-     * Installation, consist of 3 step
+     * The install action (consist of 3 step)
      *
      * @access  public
      * @param   int     $step
@@ -216,7 +223,7 @@ class Controller_Setup extends \Controller {
             $meta->last_name  = '';
             $meta->save();
 
-            $title = 'Hello World';
+            $title   = 'Hello World';
             $content = 'Some dummy text, remove this when you\'re done.';
 
             $post               = \Model_Post::factory();

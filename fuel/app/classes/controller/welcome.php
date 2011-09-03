@@ -31,6 +31,7 @@ class Controller_Welcome extends \Hybrid\Controller_Template {
 
     public function action_archive()
     {
+        $title   = '';
         $channel = $this->param('channel');
         $year    = $this->param('year');
         $month   = $this->param('month');
@@ -42,7 +43,38 @@ class Controller_Welcome extends \Hybrid\Controller_Template {
         switch (true)
         {
             case false !== $channel :
+                $title = \Str::ucfirst($channel) ." Channel";
                 $query->where('type', '=', $channel);
+            break;
+            case false !== $day and false !== $month and false !== $year :
+                $year  = intval($year);
+                $month = intval($month);
+                $day   = intval($day);
+                $start = \Date::factory(mktime(0, 0, 0, $month, $day, $year))->format('mysql');
+                $end   = \Date::factory(mktime(0, 0, 0, $month, ($day + 1), $year))->format('mysql');
+                
+                $title = "Archive for " . \Date::factory(mktime(0, 0, 0, $month, $day, $year))->format('%B %d, %Y');
+                $query->where('published_at', 'BETWEEN', array($start, $end));
+            break;
+            
+            case false !== $month and false !== $year :
+                $year  = intval($year);
+                $month = intval($month);
+                $start = \Date::factory(mktime(0, 0, 0, $month, 1, $year))->format('mysql');
+                $end   = \Date::factory(mktime(0, 0, 0, ($month + 1), 1, $year))->format('mysql');
+
+                $title = "Archive for " . \Date::factory(mktime(0, 0, 0, $month, 1, $year))->format('%B %Y');
+                $query->where('published_at', 'BETWEEN', array($start, $end));
+            break;
+
+            case false !== $year :
+                $year  = intval($year);
+                $month = intval($month);
+                $start = \Date::factory(mktime(0, 0, 0, 1, 1, $year))->format('mysql');
+                $end   = \Date::factory(mktime(0, 0, 0, 1, 1, ($year + 1)))->format('mysql');
+                
+                $title = "Archive for " . \Date::factory(mktime(0, 0, 0, 1, 1, $year))->format('%Y');
+                $query->where('published_at', 'BETWEEN', array($start, $end));
             break;
         }
 
@@ -51,6 +83,7 @@ class Controller_Welcome extends \Hybrid\Controller_Template {
         );
 
         $this->response(array(
+            'title'   => $title,
             'content' => $this->template->partial('static/archive', $data),
         ), 200);
     }

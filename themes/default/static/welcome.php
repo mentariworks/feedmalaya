@@ -6,9 +6,14 @@
 <div class="row">
 <?php 
 
-$posts = \Post::latest(3);
+$posts = \Post::latest(6);
 $count = 0;
-foreach ($posts as $post) : ?>
+foreach ($posts as $post) : 
+
+    if ($count === 3) : 
+        $count = 0; ?>
+        </div><div class="row">
+    <?php endif; ?>
     <div class="span<?php echo ($count > 0 ? '6' : '5'); ?>">
         <?php 
 

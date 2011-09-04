@@ -22,12 +22,14 @@ foreach ($posts as $post) :
              case 'link' : ?>
             <div class="page-header">
                 <h3>
-                    <?php echo \Hybrid\Html::anchor(\Post::uri($post, true), \Post::title($post)); ?>
+                    <?php echo \Hybrid\Html::anchor(\Post::uri($post), \Post::title($post)); ?>
                     <small><?php echo \Str::ucfirst($post->type); ?></small>
                 </h3>
             </div>
             
-            <?php echo \Post::excerpt($post); ?>
+            <p><?php echo \Post::excerpt($post); ?></p>
+            <p><?php echo \Hybrid\Html::anchor(\Post::uri($post), 'View Detail &raquo;', array('class' => 'btn')); ?></p>
+
         <?php 
             break;
 

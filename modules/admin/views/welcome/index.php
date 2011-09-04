@@ -37,7 +37,7 @@
                             echo '&nbsp;';
                             echo \Hybrid\Html::anchor('admin/post/' . $post->type . '/edit/' . $post->id, "Edit", array('class' => 'btn small'));
                             echo '&nbsp;';
-                            echo \Hybrid\Html::anchor('admin/post/' . $post->type . '/delete/' . $post->id, "Delete", array('class' => 'btn small danger')); ?>
+                            echo \Hybrid\Html::anchor('admin/post/index.json?id=' . $post->id, "Delete", array('class' => 'btn small danger delete')); ?>
                             </td>
                     </tr>
                 <?php endforeach; ?>
@@ -46,3 +46,14 @@
         <?php echo $pagination; ?>
     </div>
 </div>
+<script type="text/javascript">
+jQuery(function($) {
+   $('a.delete').bind('click', function(e) {
+       e.preventDefault();
+
+       var href = this.href;
+
+       Local.request('DELETE ' + href, this);
+   }) 
+});
+</script>

@@ -21,6 +21,12 @@ namespace Admin;
  */
 
 class Controller_Welcome extends \Hybrid\Controller_Hybrid {
+
+    public function before()
+    {
+        $this->acl('admin/dashboard', 'view');
+        return parent::before();
+    }
     
     /**
      * The dashboard action.

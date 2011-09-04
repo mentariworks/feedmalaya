@@ -32,9 +32,10 @@ var Local = {
             dataType = 'json';
         }
         
-        request = curl.split(' ');
-        var type = 'GET';
-        var uri = '';
+        request   = curl.split(' ');
+        var type  = 'GET';
+        var uri   = '';
+        var query = '';
         
         var types = ['POST', 'GET', 'PUT', 'DELETE'];
         
@@ -48,16 +49,23 @@ var Local = {
             }
             
             uri = request[1];
+
+            if (type !== 'GET') {
+                var temp_uri = uri.split('?');
+                if (temp_uri.length > 0) {
+                    query = temp_uri[1];
+                    uri   = temp_uri[0];
+                }
+            }
         }
         
         var id = '#' + $(object).attr('id');
-        
         
         $.ajax({
             'type': type,
             'dataType': dataType,
             'url': uri,
-            'data': $(object).serialize(),
+            'data': $(object).serialize() + '&' + query,
             'complete': function(xhr) {
                 var errors = [];
                 var default_text = 'Invalid request';

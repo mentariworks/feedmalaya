@@ -34,4 +34,27 @@ class Controller_Post extends \Hybrid\Controller_Hybrid {
         return $this->response->body = $request;
     }
 
+    public function delete_index()
+    {
+        $id = \Hybrid\Input::delete('id');
+
+        $post = \Model_Post::find($id);
+
+        if (is_null($post) or !is_numeric($id))
+        {
+            return $this->response(array(
+                'text' => 'Invalid post',
+            ), 401);
+        }
+
+        $post->status = 'delete';
+        $post->save();
+
+        return $this->response(array(
+                'success'  => true,
+                'text'     => "Post #{$id} deleted",
+                'redirect' => \Uri::create('admin/welcome'),
+            ), 200);
+    }
+
 }

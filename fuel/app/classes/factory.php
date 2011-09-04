@@ -59,12 +59,16 @@ class Factory {
         $acl->add_roles('guest');
 
         $acl->add_resources(array(
-            'admin',
+            'admin/dashboard',
             'admin/post',
+            'admin/user',
+            'admin/account',
         ));
 
-        $acl->allow('administrator', 'admin/post', 'all');
-
+        $acl->allow('administrator', array('admin/dashboard', 'admin/post', 'admin/user'), 'all');
+        $acl->allow('editor', array('admin/dashboard', 'admin/post'), 'all');
+        $acl->allow(array('administrator', 'editor', 'contributor', 'follower'), array('admin/account'), 'all');
+        
         return true;
     }
 

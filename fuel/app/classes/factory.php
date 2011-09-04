@@ -37,7 +37,7 @@ class Factory {
 
     public static function inc($n, $pos = 0)
     {
-        static $set    = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_';
+        static $set = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_';
         static $setmax = 63;
 
         if (strlen($n) == 0)
@@ -47,14 +47,13 @@ class Factory {
         }
 
         $nindex = strlen($n) - 1 - $pos;
-       
         if ($nindex < 0)
         {
             // add a new digit to the front of the number
             return $set[0] . $n;
         }
 
-        $char     = $n[$nindex];
+        $char = $n[$nindex];
         $setindex = strpos($set, $char);
 
         if ($setindex == $setmax)

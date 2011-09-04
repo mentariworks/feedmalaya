@@ -5,8 +5,8 @@ class Model_Post extends Orm\Model {
     protected static $_properties = array(
         'id',
         'user_id',
-        'short_uri',
-        'long_uri',
+        'short_id',
+        'slug',
         'type',
         'status',
         'created_at',

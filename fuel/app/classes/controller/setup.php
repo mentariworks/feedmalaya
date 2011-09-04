@@ -224,18 +224,18 @@ class Controller_Setup extends \Controller {
             $meta->save();
 
             $title   = 'Hello World';
-            $content = 'Some dummy text, remove this when you\'re done.';
+            $content = 'Some dummy text, **remove this when you\'re done**.';
 
             $post               = \Model_Post::factory();
             $post->user_id      = $user->id;
             $post->type         = 'text';
-            $post->short_uri    = \Factory::inc('');
+            $post->short_id     = \Factory::inc('');
             $post->status       = 'publish';
-            $post->long_uri     = \Inflector::friendly_title($title, '-', true);
+            $post->slug         = \Inflector::friendly_title($title, '-', true);
             $post->published_at = \Date::time()->format('mysql');
             $post->save();
 
-
+            \Option::set('app.last_short_id', $post->short_id);
 
             $text          = \Model_Posts_Text::factory();
             $text->post_id = $post->id;

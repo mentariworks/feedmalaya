@@ -23,16 +23,16 @@ class Controller_Post extends \Hybrid\Controller_Template {
         
         switch (true)
         {
-            case false !== $this->param('short_uri') :
+            case false !== $this->param('short_id') :
                 $post = \Model_Post::query()
-                    ->where('short_uri', '=', $this->param('short_uri'))
+                    ->where('short_id', '=', $this->param('short_id'))
                     ->get_one();
             break;
             
             case false !== $this->param('id') :
                 $post = \Model_Post::find(intval($this->param('id')));
 
-                if (!in_array($this->param('long_uri'), array(false, $post->long_uri)))
+                if (!in_array($this->param('slug'), array(false, $post->slug)))
                 {
                     throw new \Request404Exception();
                 }

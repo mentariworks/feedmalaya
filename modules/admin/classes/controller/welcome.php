@@ -35,6 +35,7 @@ class Controller_Welcome extends \Hybrid\Controller_Hybrid {
         );
         
         $this->response(array(
+            'title'   => 'Dashboard',
             'content' => \View::factory('welcome/index', $data, false),
         ), 200);
     }

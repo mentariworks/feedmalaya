@@ -15,8 +15,8 @@ return array(
     'people/(:segment)'         => 'people/index',
     'me'                        => 'people/me',
     
-    'p/:short_uri'              => 'post/index',
-    'post/:id/:long_uri'        => 'post/index',
+    'p/:short_id'               => 'post/index',
+    'post/:id/:slug'            => 'post/index',
     'post/:id'                  => 'post/index',
     
     /**

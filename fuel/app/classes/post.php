@@ -36,13 +36,13 @@ class Post {
         return \Str::truncate($content, $limit, '...');
     }
 
-    public static function uri(\Model_Post $post, $short_uri = false)
+    public static function uri(\Model_Post $post, $short_id = false)
     {
-        $uri = 'p/' . $post->short_uri;
+        $uri = 'p/' . $post->short_id;
 
-        if (false === $short_uri)
+        if (false === $short_id)
         {
-            $uri = 'post/' . $post->id . '/' . $post->long_uri;
+            $uri = 'post/' . $post->id . '/' . $post->slug;
         }
 
         return \Uri::create($uri);

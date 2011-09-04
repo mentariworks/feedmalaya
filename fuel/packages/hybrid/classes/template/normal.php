@@ -135,6 +135,7 @@ class Template_Normal extends Template_Driver {
         }
 
         $view->set('TEMPLATE_FOLDER', $this->folder, false);
+        $view->set('template', $this, false);
 
         return $view->render();
     }

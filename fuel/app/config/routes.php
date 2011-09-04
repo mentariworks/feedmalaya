@@ -5,12 +5,12 @@ return array(
     
     '(login|register|logout)'   => 'credential/$1',
     
-    'channel/:channel'          => 'welcome/archive',
-    'archive/:year/:month/:day' => 'welcome/archive',
-    'archive/:year/:month/'     => 'welcome/archive',
-    'archive/:year'             => 'welcome/archive',
-    
-    'page/:number'              => 'welcome/index',
+    'channel/:channel'                      => 'welcome/archive',
+    'archive/:year/:month/:day/(:any)'      => 'welcome/archive',
+    'archive/:year/:month/page/(:any)'      => 'welcome/archive',
+    'archive/:year/page/(:any)'             => 'welcome/archive',
+    'archive/(:any)'                        => 'welcome/archive',
+    'archive'                               => 'welcome/archive',
     
     'people/(:segment)'         => 'people/index',
     'me'                        => 'people/me',

@@ -6,7 +6,7 @@ foreach ($posts as $archive) :
         'content' => \Post::content($archive),
         'post' => $archive
     );
-    $view = \Hybrid\View::factory('post/' . $archive->type, $data, false);
-    $view->set_path(DOCROOT . 'themes/default/');
-    echo $view->render();
-endforeach; ?>
+    echo $template->partial('post/' . $archive->type, $data);
+endforeach; 
+
+echo $pagination; ?>

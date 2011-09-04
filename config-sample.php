@@ -3,8 +3,14 @@
 namespace FeedMalaya;
 
 class Config {
-    
-    const ENVIRONMENT = \Fuel::DEVELOPMENT;
+    /**
+     * Set Environment
+     */
+    const ENVIRONMENT = \Fuel::PRODUCTION;
+
+    /**
+     * Enable PHP Quick Profiler
+     */
     const PROFILING   = false;
 
     /**
@@ -14,7 +20,7 @@ class Config {
         'type'       => 'mysql',
         'connection' => array(
             'hostname'   => 'localhost',
-            'database'   => 'kimy_dev',
+            'database'   => 'feedmalaya_dev',
             'username'   => 'root',
             'password'   => '',
             'persistent' => false,
@@ -22,7 +28,7 @@ class Config {
         'table_prefix' => '',
         'charset'      => 'utf8',
         'caching'      => true,
-        'profiling'    => true,
+        'profiling'    => false,
     );
 
 }

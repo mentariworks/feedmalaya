@@ -1,9 +1,6 @@
 <?php $user = \Hybrid\Auth::instance()->get(); ?>
 <div class="sidebar">
     <h3><?php echo $user->full_name; ?></h3>
-    <ul>
-        <li><?php echo \Hybrid\Html::anchor('/admin/account', 'Edit Profile'); ?></li>
-    </ul>
 </div>
 
 <div class="content">

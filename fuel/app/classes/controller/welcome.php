@@ -129,7 +129,7 @@ class Controller_Welcome extends \Hybrid\Controller_Template {
         $config = array(
             'pagination_url' => $prefix_uri,
             'total_items'    => $query->count(),
-            'per_page'       => 1,
+            'per_page'       => \Config::get('app.post.per_page', 10),
             'uri_segment'    => $segment,
         );
 
@@ -139,7 +139,7 @@ class Controller_Welcome extends \Hybrid\Controller_Template {
                 ->offset(\Hybrid\Pagination::$offset);
 
         $data = array(
-            'posts'      => $query->get(),
+            'posts'      => $query->order_by('published_at', 'DESC')->get(),
             'pagination' => \Hybrid\Pagination::create_links(),
         );
 

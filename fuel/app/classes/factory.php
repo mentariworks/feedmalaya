@@ -63,6 +63,8 @@ class Factory {
             'admin/post',
         ));
 
+        $acl->allow('administrator', 'admin/post', 'all');
+
         return true;
     }
 

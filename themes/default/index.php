@@ -37,6 +37,10 @@ $content = (isset($content) ? $content : ''); ?>
 
     <div id="content" class="container after-topbar">
         <?php echo $content; ?>
+
+        <footer>
+            <p><?php echo \Config::get('app.site_name'); ?> powered by FeedMalaya.</p>
+        </footer>
     </div>
 
     <script type="text/javascript">

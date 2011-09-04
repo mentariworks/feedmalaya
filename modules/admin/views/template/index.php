@@ -40,6 +40,10 @@ $content = (isset($content) ? $content : ''); ?>
 
     <div id="content" class="container-fluid after-topbar">
         <?php echo $content; ?>
+
+        <footer>
+            <p>FeedMalaya</p>
+        </footer>
     </div>
 
     <script type="text/javascript">

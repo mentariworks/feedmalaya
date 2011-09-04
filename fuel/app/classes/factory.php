@@ -39,7 +39,31 @@ class Factory {
             \Log::error($e->getMessage());
         }
 
+        \Event::register('load_acl', '\\Factory::load_acl');
+
         static::$initiated = true;
+    }
+
+    public static function load_acl()
+    {
+        $acl   = \Hybrid\Acl::factory();
+        
+        $roles = \Model_Role::query()
+                    ->where('active', '=', 1)->get();
+
+        foreach ($roles as $role) 
+        {
+            $acl->add_roles(\Inflector::friendly_title($role->name, '-', true));
+        }
+
+        $acl->add_roles('guest');
+
+        $acl->add_resources(array(
+            'admin',
+            'admin/post',
+        ));
+
+        return true;
     }
 
     /**

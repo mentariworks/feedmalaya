@@ -1,9 +1,33 @@
 <?php
 
+/**
+ * FeedMalaya 
+ * Share everything, a great combination of Forrst, Tumblr and Google Reader
+ *
+ * @package    FeedMalaya
+ * @version    2.0
+ * @author     FeedMalaya Development Team
+ * @license    GPLv2 License (or later)
+ * @link       http://github.com/mentariworks/feedmalaya
+ */
+ 
 namespace Admin;
+
+/**
+ * The Post (Link) Controller.
+ * 
+ * @package  admin
+ * @extends  Controller_Post
+ */
 
 class Controller_Post_Link extends Controller_Post {
     
+    /**
+     * Create new post action.
+     * 
+     * @access  public
+     * @return  void
+     */
     public function action_new()
     {
         $data = array(
@@ -11,7 +35,8 @@ class Controller_Post_Link extends Controller_Post {
             'post'  => \Model_Post::factory(),
             'link'  => \Model_Posts_Link::factory(),
         );
-        $this->response(array(
+        
+        return $this->response(array(
             'title'   => $data['title'],
             'content' => \View::factory('post/link', $data),
         ), 200);
@@ -26,7 +51,8 @@ class Controller_Post_Link extends Controller_Post {
             'post'  => \Model_Post::find($id),
             'link'  => \Model_Posts_Link::query()->where('post_id', '=', $id)->get_one(),
         );
-        $this->response(array(
+
+        return $this->response(array(
             'title'   => $data['title'],
             'content' => \View::factory('post/link', $data),
         ), 200);
@@ -41,8 +67,8 @@ class Controller_Post_Link extends Controller_Post {
     {
         $errors = array();
         $id     = \Hybrid\Input::post('id', null);
-
-        $post = \Model_Post::find($id);
+        
+        $post   = \Model_Post::find($id);
 
         if ((is_null($post) or !is_numeric($id)))
         {

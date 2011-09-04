@@ -11,18 +11,8 @@
  * @link       http://github.com/mentariworks/feedmalaya
  */
  
-class Model_Role extends Orm\Model {
+namespace Admin;
 
-	protected static $_properties = array(
-		'id',
-        'name',
-        'active',
-	);
-
-    protected static $_has_many = array(
-        'users' => array('model_to' => 'Model_Users_Role'),
-    );
-
+class Controller_Post_Text extends Controller_Post {
+    
 }
-
-/* End of file role.php */

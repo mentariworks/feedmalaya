@@ -6,9 +6,14 @@
 <div class="row">
 <?php 
 
-$posts = \Post::latest(3);
+$posts = \Model_Post::latest(6);
 $count = 0;
-foreach ($posts as $post) : ?>
+foreach ($posts as $post) : 
+
+    if ($count === 3) : 
+        $count = 0; ?>
+        </div><div class="row">
+    <?php endif; ?>
     <div class="span<?php echo ($count > 0 ? '6' : '5'); ?>">
         <?php 
 
@@ -17,12 +22,14 @@ foreach ($posts as $post) : ?>
              case 'link' : ?>
             <div class="page-header">
                 <h3>
-                    <?php echo \Hybrid\Html::anchor(\Post::uri($post, true), \Post::title($post)); ?>
+                    <?php echo \Hybrid\Html::anchor(\Post::uri($post), \Post::title($post)); ?>
                     <small><?php echo \Str::ucfirst($post->type); ?></small>
                 </h3>
             </div>
             
-            <?php echo \Post::excerpt($post); ?>
+            <p><?php echo \Post::excerpt($post); ?></p>
+            <p><?php echo \Hybrid\Html::anchor(\Post::uri($post), 'View Detail &raquo;', array('class' => 'btn')); ?></p>
+
         <?php 
             break;
 

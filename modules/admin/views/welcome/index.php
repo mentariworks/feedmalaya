@@ -8,16 +8,16 @@
 
 <div class="content">
     <div class="page-header">
-        <h1>Latest Posts</h1>
+        <h1>Posts</h1>
 
         <table class="zebra-striped">
             <thead>
                 <tr>
-                    <th>#</th>
                     <th>Title</th>
                     <th>Type</th>
                     <th>Status</th>
-                    <th>Published</th>
+                    <th>Published at</th>
+                    <th>&nbsp;</th>
                 </tr>
             </thead>
             <tbody>
@@ -27,14 +27,21 @@
                     $title = \Post::title($post);
                     $url   = \Post::uri($post, true); ?>
                     <tr>
-                        <td><?php echo $post->id; ?></td>
                         <td>
                             <strong><?php echo $title; ?></strong>
-                            <p><?php echo \Post::excerpt($post, 50, false); ?></p>
                         </td>
                         <td><?php echo \Str::ucfirst($post->type); ?></td>
                         <td><?php echo \Str::ucfirst($post->status); ?></td>
                         <td><?php echo \Date::time_ago(strtotime($post->published_at)); ?></td>
+                        <td>
+                            <?php 
+
+                            echo \Hybrid\Html::anchor(\Post::uri($post, true), "View", array('class' => 'btn small primary'));
+                            echo '&nbsp;';
+                            echo \Hybrid\Html::anchor('admin/post/' . $post->type . '/edit/' . $post->id, "Edit", array('class' => 'btn small'));
+                            echo '&nbsp;';
+                            echo \Hybrid\Html::anchor('admin/post/' . $post->type . '/delete/' . $post->id, "Delete", array('class' => 'btn small danger')); ?>
+                            </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

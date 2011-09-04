@@ -27,11 +27,20 @@ $content = (isset($content) ? $content : ''); ?>
                         <?php echo \Hybrid\Html::anchor('#', 'New Post', array('class' => 'menu')); ?>
                         <ul class="menu-dropdown">
                             <li><?php echo \Hybrid\Html::anchor('admin/post/text', 'Text'); ?></li>
+                            <li><?php echo \Hybrid\Html::anchor('admin/post/link/new', 'Link'); ?></li>
                         </ul>
                     </li>
                 </ul>
 
                 <ul class="nav secondary-nav">
+                    <li class="menu">
+                        <?php echo \Hybrid\Html::anchor('#', 'Account', array('class' => 'menu')); ?>
+                        <ul class="menu-dropdown">
+                            <li><?php echo \Hybrid\Html::anchor('admin/account', 'Edit Account'); ?></li>
+                            <li><?php echo \Hybrid\Html::anchor('admin/account/edit-password', 'Edit Password'); ?></li>
+                            <li><?php echo \Hybrid\Html::anchor('logout', 'Logout'); ?></li>
+                        </ul>
+                    </li>
                     <li><?php echo \Hybrid\Html::anchor('/', 'Back to website'); ?></li>
                 </ul>
             </div>
@@ -40,6 +49,10 @@ $content = (isset($content) ? $content : ''); ?>
 
     <div id="content" class="container-fluid after-topbar">
         <?php echo $content; ?>
+
+        <footer>
+            <p>FeedMalaya</p>
+        </footer>
     </div>
 
     <script type="text/javascript">

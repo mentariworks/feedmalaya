@@ -59,19 +59,46 @@ var Local = {
             'url': uri,
             'data': $(object).serialize(),
             'complete': function(xhr) {
-                var data = Local.getJSON(xhr.responseText);
                 var errors = [];
-
                 var default_text = 'Invalid request';
-                
-                if (!(data == null || data.text == null)) {
-                    errors.push(data.text.toString());
-                }
 
-                if ('undefined' !== typeof data.errors && data.errors !== null) {
-                    for (var i = 0, length = data.errors.length; i < length; i++) {
-                        errors.push(data.errors[i]);
+                if (xhr.responseText != '') {
+                    var data = Local.getJSON(xhr.responseText);
+
+                    $('div[id^="field-"]', object).removeClass('error');
+                    $('div[id^="field-"] .help-error', object).remove();
+
+                    if (!(data == null || data.text == null)) {
+                        errors.push(data.text.toString());
                     }
+
+                    if ('undefined' !== typeof data.errors && data.errors !== null) {
+                        for (var i = 0, length = data.errors.length; i < length; i++) {
+                            errors.push(data.errors[i]);
+                        }
+                    }
+
+                    if ('undefined' !== typeof data.field_errors && data.field_errors !== null) {
+                        var fields = data.field_errors;
+                        for (var name in fields) {
+                            if (fields.hasOwnProperty(name)) {
+
+                                $('#field-' + name, object).addClass('error');
+                                if ($('#field-' + name + ' span.help-block', object).size() > 0) {
+                                    $('<span/>').addClass('help-inline help-error').html(fields[name]).insertBefore('#field-' + name + ' div.input:first > span.help-block', object);
+                                }
+                                else {
+                                    $('<span/>').addClass('help-inline help-error').html(fields[name]).appendTo('#field-' + name + ' div.input:first', object);
+                                }
+                            }
+                        }
+                    }
+                }
+                else {
+                    xhr.status = 401;
+                    var data = {
+                        text : ''
+                    };
                 }
                 
                 Local.progress(true);

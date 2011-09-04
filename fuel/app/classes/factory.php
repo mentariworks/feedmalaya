@@ -1,9 +1,26 @@
 <?php
 
+/**
+ * FeedMalaya 
+ * Share everything, a great combination of Forrst, Tumblr and Google Reader
+ *
+ * @package    FeedMalaya
+ * @version    2.0
+ * @author     FeedMalaya Development Team
+ * @license    GPLv2 License (or later)
+ * @link       http://github.com/mentariworks/feedmalaya
+ */
+
 class Factory {
 
     protected static $initiated = false;
     
+    /**
+     * Initiate this during first call.
+     *
+     * @static
+     * @access  public
+     */
     public static function _init()
     {
         if (false !== static::$initiated)
@@ -15,29 +32,54 @@ class Factory {
 
         try 
         {
-            static::load_config();
+            \Option::init();
         }
         catch (\Fuel_Exception $e)
         {
             \Log::error($e->getMessage());
         }
 
+        \Event::register('load_acl', '\\Factory::load_acl');
+
         static::$initiated = true;
     }
 
-    public static function load_config()
+    public static function load_acl()
     {
-        $options = \Model_Option::query()->where('active', '=', 1)->get();
+        $acl   = \Hybrid\Acl::factory();
         
-        foreach ($options as $option)
+        $roles = \Model_Role::query()
+                    ->where('active', '=', 1)->get();
+
+        foreach ($roles as $role) 
         {
-            \Config::set($option->name, $option->value);
+            $acl->add_roles(\Inflector::friendly_title($role->name, '-', true));
         }
+
+        $acl->add_roles('guest');
+
+        $acl->add_resources(array(
+            'admin',
+            'admin/post',
+        ));
+
+        $acl->allow('administrator', 'admin/post', 'all');
+
+        return true;
     }
 
+    /**
+     * Generate next short_id.
+     *
+     * @static
+     * @access  public
+     * @param   string  $n
+     * @param   int     $pos
+     * @return  string
+     */
     public static function inc($n, $pos = 0)
     {
-        static $set    = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_';
+        static $set = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_';
         static $setmax = 63;
 
         if (strlen($n) == 0)
@@ -47,14 +89,13 @@ class Factory {
         }
 
         $nindex = strlen($n) - 1 - $pos;
-       
         if ($nindex < 0)
         {
             // add a new digit to the front of the number
             return $set[0] . $n;
         }
 
-        $char     = $n[$nindex];
+        $char = $n[$nindex];
         $setindex = strpos($set, $char);
 
         if ($setindex == $setmax)

@@ -1,13 +1,32 @@
 <?php
 
+/**
+ * FeedMalaya 
+ * Share everything, a great combination of Forrst, Tumblr and Google Reader
+ *
+ * @package    FeedMalaya
+ * @version    2.0
+ * @author     FeedMalaya Development Team
+ * @license    GPLv2 License (or later)
+ * @link       http://github.com/mentariworks/feedmalaya
+ */
+
+/**
+ * The Setup/Installer Controller.
+ * 
+ * @package  app
+ * @extends  \Controller
+ */
+
 class Controller_Setup extends \Controller {
     
     /**
-     * Should not be accessible
+     * Shortcut to install action.
      *
      * @access  public
      * @return  void
      * @throws  \Request404Exception
+     * @see     self::action_install()
      */
     public function action_index($step = null)
     {
@@ -15,7 +34,7 @@ class Controller_Setup extends \Controller {
     }
 
     /**
-     * Installation, consist of 3 step
+     * The install action (consist of 3 step).
      *
      * @access  public
      * @param   int     $step
@@ -36,16 +55,16 @@ class Controller_Setup extends \Controller {
         switch ($step)
         {
             case 1 :
-                $body = $this->step_1();
+                $body = $this->step_one();
             break;
 
             case 2 :
                 $this->check_status();
-                $body = $this->step_2();
+                $body = $this->step_two();
             break;
 
             case 3 :
-                $body = $this->step_3();
+                $body = $this->step_three();
             break; 
 
             default :
@@ -57,10 +76,12 @@ class Controller_Setup extends \Controller {
     }
 
     /**
-     * Check database if user table already presented
+     * Check database if user table already presented.
      *
      * @final
      * @access  protected
+     * @return  bool
+     * @throws  \Request404Exception
      */
     protected final function check_status()
     {
@@ -75,12 +96,12 @@ class Controller_Setup extends \Controller {
     }
 
     /**
-     * Step 1: Setup Database (Run migration script)
+     * Step 1: Setup Database (Run migration script).
      *
      * @access  protected
      * @return  array
      */
-    protected function step_1()
+    protected function step_one()
     {
         $title  = "Step 1: Setup Database";
         $errors = array();
@@ -113,12 +134,12 @@ class Controller_Setup extends \Controller {
     }
 
     /**
-     * Step 2: Setup Administrator Account
+     * Step 2: Setup Administrator Account.
      *
      * @access  protected
      * @return  array
      */
-    protected function step_2()
+    protected function step_two()
     {
         $title  = "Step 2: Setup Administrator Account";
         $errors = array();
@@ -158,12 +179,12 @@ class Controller_Setup extends \Controller {
     }
 
     /**
-     * Step 3: Add user
+     * Step 3: Add user.
      *
      * @access  protected
      * @return  array
      */
-    protected function step_3()
+    protected function step_three()
     {
         $title  = "Step 3: Done";
         $errors = array();
@@ -216,19 +237,19 @@ class Controller_Setup extends \Controller {
             $meta->last_name  = '';
             $meta->save();
 
-            $title = 'Hello World';
-            $content = 'Some dummy text, remove this when you\'re done.';
+            $title   = 'Hello World';
+            $content = 'Some dummy text, **remove this when you\'re done**.';
 
             $post               = \Model_Post::factory();
             $post->user_id      = $user->id;
             $post->type         = 'text';
-            $post->short_uri    = \Factory::inc('');
+            $post->short_id     = \Factory::inc('');
             $post->status       = 'publish';
-            $post->long_uri     = \Inflector::friendly_title($title, '-', true);
+            $post->slug         = \Inflector::friendly_title($title, '-', true);
             $post->published_at = \Date::time()->format('mysql');
             $post->save();
 
-
+            \Option::set('app.last_short_id', $post->short_id);
 
             $text          = \Model_Posts_Text::factory();
             $text->post_id = $post->id;
@@ -247,7 +268,6 @@ class Controller_Setup extends \Controller {
             'prev'    => \Uri::create('setup/install/2'),
             'errors'  => $errors,
         );
-
     }
 
 }

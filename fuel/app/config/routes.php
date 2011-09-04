@@ -1,20 +1,23 @@
 <?php
 return array(
-    '_root_'                  => 'welcome/index',       // The default route
-    '_404_'                   => 'welcome/404',      // The main 404 route
+    '_root_'                    => 'welcome/index',       // The default route
+    '_404_'                     => 'welcome/404',      // The main 404 route
     
-    '(login|register|logout)' => 'credential/$1',
-
-    'channel/:channel'        => 'welcome/archive',
+    '(login|register|logout)'   => 'credential/$1',
     
-    'page/:number'            => 'welcome/index',
+    'channel/:channel'                      => 'welcome/archive',
+    'archive/:year/:month/:day/(:any)'      => 'welcome/archive',
+    'archive/:year/:month/page/(:any)'      => 'welcome/archive',
+    'archive/:year/page/(:any)'             => 'welcome/archive',
+    'archive/(:any)'                        => 'welcome/archive',
+    'archive'                               => 'welcome/archive',
     
-    'people/(:segment)'       => 'people/index',
-    'me'                      => 'people/me',
-
-    'p/:short_uri'            => 'post/index',
-    'post/:id/:long_uri'      => 'post/index',
-    'post/:id'                => 'post/index',
+    'people/(:segment)'         => 'people/index',
+    'me'                        => 'people/me',
+    
+    'p/:short_id'               => 'post/index',
+    'post/:id/:slug'            => 'post/index',
+    'post/:id'                  => 'post/index',
     
     /**
      * This is an example of a BASIC named route (used in reverse routing).

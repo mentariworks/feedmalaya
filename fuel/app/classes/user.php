@@ -1,7 +1,27 @@
 <?php
 
+/**
+ * FeedMalaya 
+ * Share everything, a great combination of Forrst, Tumblr and Google Reader
+ *
+ * @package    FeedMalaya
+ * @version    2.0
+ * @author     FeedMalaya Development Team
+ * @license    GPLv2 License (or later)
+ * @link       http://github.com/mentariworks/feedmalaya
+ */
+
 class User {
     
+    /**
+     * Validate username format.
+     *
+     * @static
+     * @access  public
+     * @param   string  $name
+     * @return  bool
+     * @throws  \Fuel_Exception
+     */
     public static function check_username($name)
     {
         if (empty($name))
@@ -29,6 +49,15 @@ class User {
         return true;
     }
 
+    /**
+     * Validate e-mail address.
+     *
+     * @static
+     * @access  public
+     * @param   string  $address
+     * @return  bool
+     * @throws  \Fuel_Exception
+     */
     public static function check_email($address)
     {
         if (false == filter_var($address, FILTER_VALIDATE_EMAIL))
@@ -38,4 +67,5 @@ class User {
 
         return true;
     }
+    
 }

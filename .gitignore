@@ -2,5 +2,6 @@ fuel/app/logs/*/*/*
 fuel/app/cache/*/*
 fuel/app/tmp/*
 fuel/app/config/migrations.php
+config.php
 .project
 .DS_Store

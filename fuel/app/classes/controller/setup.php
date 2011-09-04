@@ -121,6 +121,21 @@ class Controller_Setup extends \Controller {
         {
             array_push($errors, "Setup already done, we can't reinstall without clearing the database");
         }
+        else 
+        {
+            $roles = array(
+                array('name' => 'Follower', 'active' => 1),
+                array('name' => 'Contributor', 'active' => 1),
+                array('name' => 'Editor', 'active' => 1),
+                array('name' => 'Administrator', 'active' => 1),
+            );
+
+            foreach ($roles as $role)
+            {
+                $role_model = \Model_Role::factory($role);
+                $role_model->save();
+            }
+        }
         
         return array(
             'title' => $title,

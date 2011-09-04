@@ -7,6 +7,9 @@ class Config {
     const ENVIRONMENT = \Fuel::DEVELOPMENT;
     const PROFILING   = false;
 
+    /**
+     * Database configuration
+     */
     public static $database = array(
         'type'       => 'mysql',
         'connection' => array(

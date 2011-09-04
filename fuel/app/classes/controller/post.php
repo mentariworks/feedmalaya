@@ -1,6 +1,17 @@
 <?php
 
 /**
+ * FeedMalaya 
+ * Share everything, a great combination of Forrst, Tumblr and Google Reader
+ *
+ * @package    FeedMalaya
+ * @version    2.0
+ * @author     FeedMalaya Development Team
+ * @license    GPLv2 License (or later)
+ * @link       http://github.com/mentariworks/feedmalaya
+ */
+
+/**
  * The Post Controller.
  * 
  * @package  app
@@ -12,7 +23,7 @@ class Controller_Post extends \Hybrid\Controller_Template {
     public $template = 'frontend.default';
 
     /**
-     * View single post
+     * View single post action.
      *
      * @access  public
      * @return  void
@@ -66,7 +77,7 @@ class Controller_Post extends \Hybrid\Controller_Template {
     }
 
     /**
-     * Fetch Text Post
+     * Fetch text post.
      *
      * @access  protected
      * @param   \Model_Post $post
@@ -96,7 +107,7 @@ class Controller_Post extends \Hybrid\Controller_Template {
     }
 
     /**
-     * Fetch Link Post
+     * Fetch link post.
      *
      * @access  protected
      * @param   \Model_Post $post

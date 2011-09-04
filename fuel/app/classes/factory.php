@@ -1,9 +1,26 @@
 <?php
 
+/**
+ * FeedMalaya 
+ * Share everything, a great combination of Forrst, Tumblr and Google Reader
+ *
+ * @package    FeedMalaya
+ * @version    2.0
+ * @author     FeedMalaya Development Team
+ * @license    GPLv2 License (or later)
+ * @link       http://github.com/mentariworks/feedmalaya
+ */
+
 class Factory {
 
     protected static $initiated = false;
     
+    /**
+     * Initiate this during first call.
+     *
+     * @static
+     * @access  public
+     */
     public static function _init()
     {
         if (false !== static::$initiated)
@@ -15,7 +32,7 @@ class Factory {
 
         try 
         {
-            static::load_config();
+            \Option::init();
         }
         catch (\Fuel_Exception $e)
         {
@@ -25,16 +42,15 @@ class Factory {
         static::$initiated = true;
     }
 
-    public static function load_config()
-    {
-        $options = \Model_Option::query()->where('active', '=', 1)->get();
-        
-        foreach ($options as $option)
-        {
-            \Config::set($option->name, $option->value);
-        }
-    }
-
+    /**
+     * Generate next short_id.
+     *
+     * @static
+     * @access  public
+     * @param   string  $n
+     * @param   int     $pos
+     * @return  string
+     */
     public static function inc($n, $pos = 0)
     {
         static $set = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_';

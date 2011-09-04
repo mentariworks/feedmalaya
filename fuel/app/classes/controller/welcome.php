@@ -1,6 +1,17 @@
 <?php
 
 /**
+ * FeedMalaya 
+ * Share everything, a great combination of Forrst, Tumblr and Google Reader
+ *
+ * @package    FeedMalaya
+ * @version    2.0
+ * @author     FeedMalaya Development Team
+ * @license    GPLv2 License (or later)
+ * @link       http://github.com/mentariworks/feedmalaya
+ */
+
+/**
  * The Welcome Controller.
  * 
  * @package  app
@@ -31,10 +42,11 @@ class Controller_Welcome extends \Hybrid\Controller_Template {
     }
 
     /**
-     * The archive action
+     * The archive action.
      *
      * @access  public
      * @return  void
+     * @throws  \Request404Exception
      */
     public function action_archive()
     {
@@ -155,6 +167,5 @@ class Controller_Welcome extends \Hybrid\Controller_Template {
             'content' => $this->template->partial('404', $data),
         ), 404);
     }
-}
 
-/* End of file welcome.php */
+}

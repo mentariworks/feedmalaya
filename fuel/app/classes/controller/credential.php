@@ -1,6 +1,17 @@
 <?php
 
 /**
+ * FeedMalaya 
+ * Share everything, a great combination of Forrst, Tumblr and Google Reader
+ *
+ * @package    FeedMalaya
+ * @version    2.0
+ * @author     FeedMalaya Development Team
+ * @license    GPLv2 License (or later)
+ * @link       http://github.com/mentariworks/feedmalaya
+ */
+
+/**
  * The Credential Controller.
  * 
  * @package  app
@@ -12,7 +23,7 @@ class Controller_Credential extends \Hybrid\Controller_Hybrid {
     public $template = 'frontend.default';
     
     /**
-     * Login Form
+     * The login form action.
      *
      * @access  public
      * @return  void
@@ -21,6 +32,7 @@ class Controller_Credential extends \Hybrid\Controller_Hybrid {
     {
         if (true === \Hybrid\Auth_User::instance()->is_logged())
         {
+            // logged in user shouldn't have access to this page, redirect them.
             \Response::redirect('/');    
         }
 
@@ -31,7 +43,7 @@ class Controller_Credential extends \Hybrid\Controller_Hybrid {
     }
 
     /**
-     * Register Form
+     * The register form action.
      *
      * @access  public
      * @return  void
@@ -40,6 +52,7 @@ class Controller_Credential extends \Hybrid\Controller_Hybrid {
     {
         if (true === \Hybrid\Auth_User::instance()->is_logged())
         {
+            // logged in user shouldn't have access to this page, redirect them
             \Response::redirect('/');    
         }
 
@@ -50,7 +63,7 @@ class Controller_Credential extends \Hybrid\Controller_Hybrid {
     }
 
     /**
-     * Logout account
+     * The logout action.
      *
      * @access  public
      * @return  void
@@ -63,7 +76,7 @@ class Controller_Credential extends \Hybrid\Controller_Hybrid {
     }
 
     /**
-     * Process user login
+     * The user login action.
      *
      * @access  public
      * @return  void
@@ -90,6 +103,12 @@ class Controller_Credential extends \Hybrid\Controller_Hybrid {
         }
     }
 
+    /**
+     * The user registeration action.
+     *
+     * @access  public
+     * @return  void
+     */
     public function post_register()
     {
         $errors = array();
@@ -175,6 +194,12 @@ class Controller_Credential extends \Hybrid\Controller_Hybrid {
         ), 200);
     }
 
+    /**
+     * The logout (using REST) action.
+     *
+     * @access  public
+     * @return  void
+     */
     public function post_logout()
     {
         

@@ -37,7 +37,7 @@ $content = (isset($content) ? $content : ''); ?>
                         <?php echo \Hybrid\Html::anchor('#', 'Account', array('class' => 'menu')); ?>
                         <ul class="menu-dropdown">
                             <li><?php echo \Hybrid\Html::anchor('admin/account', 'Edit Account'); ?></li>
-                            <li><?php echo \Hybrid\Html::anchor('admin/account/edit-password', 'Edit Password'); ?></li>
+                            <li><?php echo \Hybrid\Html::anchor('admin/account/password', 'Edit Password'); ?></li>
                             <li><?php echo \Hybrid\Html::anchor('logout', 'Logout'); ?></li>
                         </ul>
                     </li>

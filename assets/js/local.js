@@ -127,7 +127,7 @@ var Local = {
                             if (delayed) {
                                 setTimeout(function() {
                                     window.location.href = data.redirect;
-                                }, 4000);
+                                }, 3000);
                             }
                             else {
                                 window.location.href = data.redirect;

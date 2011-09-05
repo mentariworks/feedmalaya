@@ -127,4 +127,5 @@ class Controller_Post extends \Hybrid\Controller_Template {
 
         \Response::redirect($link->url, 'refresh');
     }
+    
 }

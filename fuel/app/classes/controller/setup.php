@@ -258,7 +258,7 @@ class Controller_Setup extends \Controller {
             $post               = \Model_Post::factory();
             $post->user_id      = $user->id;
             $post->type         = 'text';
-            $post->short_id     = \Factory::inc('');
+            $post->short_id     = \Post::inc('');
             $post->status       = 'publish';
             $post->slug         = \Inflector::friendly_title($title, '-', true);
             $post->published_at = \Date::time()->format('mysql');

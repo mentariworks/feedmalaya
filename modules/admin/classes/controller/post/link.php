@@ -77,7 +77,7 @@ class Controller_Post_Link extends Controller_Post {
             
             // find last short_id
             $last_short_id      = \Config::get('app.last_short_id', '');
-            $post->short_id     = \Factory::inc($last_short_id);
+            $post->short_id     = \Post::inc($last_short_id);
             $post->published_at = \Date::time()->format('mysql');
 
             \Option::set('app.last_short_id', $post->short_id);
